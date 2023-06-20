@@ -1,0 +1,5 @@
+#header {
+  justify-content: center;
+  background: rgb(45, 234, 253);
+  background: linear-gradient(0deg, rgba(45, 234, 253, 1) 40%, rgba(113, 22, 224, 1) 100%);
+}
