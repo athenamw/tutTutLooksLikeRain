@@ -1,0 +1,30 @@
+#header {
+  display: flex;
+  justify-content: center;
+  background: rgb(45, 234, 253);
+  background: linear-gradient(0deg, rgba(45, 234, 253, 1) 40%, rgba(113, 22, 224, 1) 100%);
+  font-size: 50px;
+}
+#cityList {
+  width: 35%;
+  float: left;
+  background-color: lightgoldenrodyellow;
+}
+#searchBtn {
+  background-color: rgb(45, 234, 253);
+  border-bottom: solid;
+}
+.displayResults {
+  display: none;
+  width: 65%;
+  float: right;
+  border-style: solid;
+}
+#icon {
+  display: none;
+}
+
+.container {
+  display: flex;
+  height: 100px;
+}

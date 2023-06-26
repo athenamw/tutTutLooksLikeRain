@@ -1,3 +1,4 @@
+const weatherPic = `https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2{}`;
 var searchBtn = document.getElementById('searchBtn');
 
 async function getWeather() {
@@ -26,11 +27,20 @@ async function forecast(cityName) {
 async function loadResults(forecast) {
   const location = document.querySelector('#cityName');
   const temp = document.querySelector('#temp');
-  const condition = document.querySelector('#condition');
+  const wind = document.querySelector('#wind');
+  const humid = document.querySelector('#humid');
+  const icon = document.querySelector('#conditionIcon');
+  const iconSection = document.getElementById('icon');
+  const disResults = document.getElementById('disResults');
 
   location.textContent = forecast.name;
-  temp.textContent = `${forecast.main.temp}°F`;
-  condition.textContent = forecast.weather[0].main;
+  temp.textContent = `Temp: ${forecast.main.temp} °F`;
+  wind.textContent = `Wind: ${forecast.wind.speed} MPH`;
+  humid.textContent = `Humidity: ${forecast.main.humidity} %`;
+  disResults.style.display = 'block';
+  iconSection.style.display = 'block';
+  icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
 }
 
-const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=616ee85e0800531ffd57bf53410a822b';
+// export function locationFiveDay(lat, lon) {}
+// const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=616ee85e0800531ffd57bf53410a822b';
