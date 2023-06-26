@@ -26,6 +26,7 @@ async function forecast(cityName) {
 
 async function loadResults(forecast) {
   const location = document.querySelector('#cityName');
+
   const temp = document.querySelector('#temp');
   const wind = document.querySelector('#wind');
   const humid = document.querySelector('#humid');
@@ -33,7 +34,8 @@ async function loadResults(forecast) {
   const iconSection = document.getElementById('icon');
   const disResults = document.getElementById('disResults');
 
-  location.textContent = forecast.name;
+  location.textContent = forecast.name + ' (' + Date() + ')';
+
   temp.textContent = `Temp: ${forecast.main.temp} °F`;
   wind.textContent = `Wind: ${forecast.wind.speed} MPH`;
   humid.textContent = `Humidity: ${forecast.main.humidity} %`;
@@ -42,5 +44,7 @@ async function loadResults(forecast) {
   icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
 }
 
-// export function locationFiveDay(lat, lon) {}
-// const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=616ee85e0800531ffd57bf53410a822b';
+// export function locationFiveDay(lat, lon) {
+//   const coord = document.querySelector('#coord');
+//   const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=616ee85e0800531ffd57bf53410a822b';
+// }
