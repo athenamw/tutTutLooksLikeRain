@@ -1,4 +1,4 @@
-#header {
+header {
   display: flex;
   justify-content: center;
   background: rgb(45, 234, 253);
@@ -8,11 +8,12 @@
 #cityList {
   width: 35%;
   float: left;
-  background-color: lightgoldenrodyellow;
+  background: lightgoldenrodyellow;
 }
 #searchBtn {
   background-color: rgb(45, 234, 253);
   border-bottom: solid;
+  margin-top: 15px;
 }
 .displayResults {
   display: none;
@@ -27,4 +28,9 @@
 .container {
   display: flex;
   height: 100px;
+}
+#futureResults {
+  background: blue;
+  max-width: 15%;
+  font: bold;
 }
