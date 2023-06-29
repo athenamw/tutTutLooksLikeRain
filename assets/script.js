@@ -11,7 +11,7 @@ async function getWeather() {
   var futureWeatherData = await getForecast(futureForecast);
   console.log('weatherData', currentWeatherData);
   console.log('Future Weather Data', futureWeatherData);
-  await loadResults(currentWeatherData);
+  await loadResults(currentWeatherData, futureWeatherData);
 }
 
 async function getForecast(api) {
@@ -22,7 +22,7 @@ async function getForecast(api) {
   });
 }
 
-async function loadResults(forecast) {
+async function loadResults(currentWeatherData, futureWeatherData) {
   const location = document.querySelector('#cityName');
   const temp = document.querySelector('#temp');
   const wind = document.querySelector('#wind');
@@ -31,11 +31,24 @@ async function loadResults(forecast) {
   const iconSection = document.getElementById('icon');
   const disResults = document.getElementById('disResults');
 
-  location.textContent = forecast.name + ' (' + Date() + ')';
-  temp.textContent = `Temp: ${forecast.main.temp} °F`;
-  wind.textContent = `Wind: ${forecast.wind.speed} MPH`;
-  humid.textContent = `Humidity: ${forecast.main.humidity} %`;
+  location.textContent = currentWeatherData.name + ' (' + new Date().toDateString() + ')';
+  temp.textContent = `Temp: ${currentWeatherData.main.temp} °F`;
+  wind.textContent = `Wind: ${currentWeatherData.wind.speed} MPH`;
+  humid.textContent = `Humidity: ${currentWeatherData.main.humidity} %`;
   disResults.style.display = 'block';
   iconSection.style.display = 'block';
-  icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+  icon.src = `https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`;
+
+  console.log('\n');
+
+  for (let index = 0; index < 40; index += 8) {
+    // console.log(futureWeatherData.list[index]);
+    console.log(`<p>Date: ${futureWeatherData.list[index].dt_txt}</p>`);
+    console.log(`Temp: ${futureWeatherData.list[index].main.temp} °F`);
+    console.log(`Wind: ${futureWeatherData.list[index].wind.speed} MPH`);
+    console.log(`Humidity: ${futureWeatherData.list[index].main.humidity} %`);
+    console.log('\n');
+  }
 }
+// innerHTML
+// document.createElement
