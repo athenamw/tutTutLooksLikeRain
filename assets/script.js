@@ -41,13 +41,25 @@ async function loadResults(currentWeatherData, futureWeatherData) {
 
   console.log('\n');
 
-  for (let index = 0; index < 40; index += 8) {
-    // console.log(futureWeatherData.list[index]);
-    console.log(`<p>Date: ${futureWeatherData.list[index].dt_txt}</p>`);
-    console.log(`Temp: ${futureWeatherData.list[index].main.temp} °F`);
-    console.log(`Wind: ${futureWeatherData.list[index].wind.speed} MPH`);
-    console.log(`Humidity: ${futureWeatherData.list[index].main.humidity} %`);
-    console.log('\n');
+  for (let index = 5; index < 40; index += 8) {
+    let forecastBoxes = document.getElementById('forecastBoxes');
+    let futureResults = document.createElement('section');
+    futureResults.id = 'futureResults';
+
+    let fDate = `<p>Date: ${futureWeatherData.list[index].dt_txt}</p>`;
+    let weatherImage = document.createElement('img');
+    weatherImage.src = `https://openweathermap.org/img/wn/${futureWeatherData.list[index].weather[0].icon}@2x.png`;
+    let fTemp = `<p>Temp: ${futureWeatherData.list[index].main.temp} °F</p>`;
+    let fWind = `<p>Wind: ${futureWeatherData.list[index].wind.speed} MPH</p>`;
+    let fHumidity = `<p>Humidity: ${futureWeatherData.list[index].main.humidity} %</p>`;
+
+    futureResults.innerHTML += fDate;
+    futureResults.appendChild(weatherImage);
+    futureResults.innerHTML += fTemp;
+    futureResults.innerHTML += fWind;
+    futureResults.innerHTML += fHumidity;
+
+    forecastBoxes.appendChild(futureResults);
   }
 }
 // innerHTML
