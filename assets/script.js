@@ -30,14 +30,16 @@ async function loadResults(currentWeatherData, futureWeatherData) {
   const icon = document.querySelector('#conditionIcon');
   const iconSection = document.getElementById('icon');
   const disResults = document.getElementById('disResults');
+  const fiveDayHeader = document.getElementById('fiveDayHeader');
 
   location.textContent = currentWeatherData.name + ' (' + new Date().toDateString() + ')';
   temp.textContent = `Temp: ${currentWeatherData.main.temp} °F`;
   wind.textContent = `Wind: ${currentWeatherData.wind.speed} MPH`;
   humid.textContent = `Humidity: ${currentWeatherData.main.humidity} %`;
-  disResults.style.display = 'block';
+  disResults.style.display = 'inline-block';
   iconSection.style.display = 'block';
   icon.src = `https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`;
+  fiveDayHeader.style.display = 'block';
 
   console.log('\n');
 
