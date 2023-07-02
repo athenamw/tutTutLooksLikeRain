@@ -65,5 +65,17 @@ async function loadResults(currentWeatherData, futureWeatherData) {
     forecastBoxes.appendChild(futureResults);
   }
 }
-// innerHTML
-// document.createElement
+
+function save() {
+  var favorite = JSON.parse(localStorage.getItem('favorites')) || [];
+  let recipeInfo = checkRecipeExisting(favorite, meal);
+  var recipeExists = recipeInfo[0];
+  var recipeIndex = recipeInfo[1];
+  if (recipeExists) {
+    favorite.splice(recipeIndex, 1);
+  } else {
+    favorite.push(meal);
+  }
+  localStorage.setItem('favorites', JSON.stringify(favorite));
+  changeLikeButtonIcon(this.event.target);
+}
