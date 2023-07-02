@@ -50,6 +50,7 @@ async function loadResults(currentWeatherData, futureWeatherData) {
 
     let fDate = `<p>Date: ${futureWeatherData.list[index].dt_txt}</p>`;
     let weatherImage = document.createElement('img');
+    weatherImage.style.maxWidth = '40px';
     weatherImage.src = `https://openweathermap.org/img/wn/${futureWeatherData.list[index].weather[0].icon}@2x.png`;
     let fTemp = `<p>Temp: ${futureWeatherData.list[index].main.temp} °F</p>`;
     let fWind = `<p>Wind: ${futureWeatherData.list[index].wind.speed} MPH</p>`;
