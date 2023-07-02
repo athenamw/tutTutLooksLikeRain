@@ -36,10 +36,10 @@ async function loadResults(currentWeatherData, futureWeatherData) {
   temp.textContent = `Temp: ${currentWeatherData.main.temp} °F`;
   wind.textContent = `Wind: ${currentWeatherData.wind.speed} MPH`;
   humid.textContent = `Humidity: ${currentWeatherData.main.humidity} %`;
-  disResults.style.display = 'inline-block';
+  disResults.style.display = 'block';
   iconSection.style.display = 'block';
   icon.src = `https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`;
-  fiveDayHeader.style.display = 'block';
+  (fiveDayHeader.style.display = 'flex'), 'flexDirection: row';
 
   console.log('\n');
 

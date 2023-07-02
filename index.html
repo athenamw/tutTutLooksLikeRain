@@ -7,33 +7,35 @@
     <title>Tut Tut Looks Like Rain</title>
   </head>
   <body>
-    <header id="header">Weather Dashboard</header>
-    
-    <section class"sidenav">
-      <section id:"cityList">
-      <h1>Search for a City:</h1>
-      <input type="text" id="searchText" /> <br />
-      <button id="searchBtn">Search</button>
+    <section id="page">
+      <header id="header">Weather Dashboard</header>
+        <nav>
+          <section id:"cityList">
+            <h1>Search for a City:</h1>
+              <input type="text" id="searchText" /> <br />
+                <button id="searchBtn">Search</button>
+          </section>
+          <section id="savedCities">
+            <ul id="cityBtns"></ul>
+          </section>
+        </nav>
+          <main>
+            <section class="displayResults" id="disResults">
+              <h2 id="cityName"></h2>
+              <section id="icon"><img id="conditionIcon" src="" alt="Condition icon" /></section>
+              <p id="temp"></p>
+              <p id="wind"></p>
+              <p id="humid"></p>
+            </section>          
+            <section class="futureForecast" id="fiveDay">
+              <h2 id="fiveDayHeader">5-Day Forecast</h2>
+              <section id="forecastBoxes">
+                
+              </section>    
+            </section>
+          </main>
     </section>
-    <section id="savedCities">
-      <button id="saveBtn">Save</button>
-      <ul id="cityBtns"></ul>
-    </section>
-   
-    <section class="displayResults" id="disResults">
-      <h2 id="cityName"></h2>
-      <section id="icon"><img id="conditionIcon" src="" alt="Condition icon" /></section>
-      <p id="temp"></p>
-      <p id="wind"></p>
-      <p id="humid"></p>
-      
-    </section>
-      <section class="futureForecast" id="fiveDay">
-        <section id="forecastBoxes"> 
-          <h1 id="fiveDayHeader">5-Day Forecast</h1>
-        </section>    
-      </section>
-  </section>
+
     <script src="./assets/script.js"></script>
   </body>
 </html>
