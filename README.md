@@ -20,7 +20,7 @@ Follow this link to get to the website: [Tut Tut Looks Like Rain](https://athena
 
 [CSS](https://github.com/athenamw/tutTutLooksLikeRain/blob/main/assets/script.js)
 
-This is a screenshot for the Home page
+This is a screenshot for the page:
 ![Screenshot](./assets/weatherScreenshot.png)
 
 ## Credits
