@@ -35,6 +35,13 @@
   margin-bottom: 15px;
 }
 
+#savedCity {
+  margin: 10px;
+  height: 50px;
+  width: 100%;
+  font-size: small;
+}
+
 .displayResults {
   display: none;
   border-style: solid;
