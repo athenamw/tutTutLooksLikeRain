@@ -1,10 +1,24 @@
 const weatherPic = `https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2{}`;
 var searchBtn = document.getElementById('searchBtn');
+var searchText = document.getElementById('searchText');
 
-searchBtn.addEventListener('click', getWeather);
+window.addEventListener('load', cityLoop);
 
-async function getWeather() {
-  let cityName = document.getElementById('searchText').value;
+searchBtn.addEventListener('click', searchEventListener);
+searchText.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    searchEventListener();
+  }
+});
+
+async function searchEventListener() {
+  let cityName = searchText.value;
+  searchText.value = '';
+  await getWeather(cityName);
+  await save(cityName);
+}
+
+async function getWeather(cityName) {
   const currentWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=616ee85e0800531ffd57bf53410a822b&units=imperial`;
   let currentWeatherData = await getForecast(currentWeatherApi);
   const futureForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=616ee85e0800531ffd57bf53410a822b&units=imperial`;
@@ -41,10 +55,10 @@ async function loadResults(currentWeatherData, futureWeatherData) {
   icon.src = `https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`;
   (fiveDayHeader.style.display = 'flex'), 'flexDirection: row';
 
-  console.log('\n');
-
+  let forecastBoxes = document.getElementById('forecastBoxes');
+  forecastBoxes.innerHTML = '';
+  // gets the 5 day forecast
   for (let index = 5; index < 40; index += 8) {
-    let forecastBoxes = document.getElementById('forecastBoxes');
     let futureResults = document.createElement('section');
     futureResults.id = 'futureResults';
 
@@ -65,17 +79,35 @@ async function loadResults(currentWeatherData, futureWeatherData) {
     forecastBoxes.appendChild(futureResults);
   }
 }
-
-function save() {
-  var favorite = JSON.parse(localStorage.getItem('favorites')) || [];
-  let recipeInfo = checkRecipeExisting(favorite, meal);
-  var recipeExists = recipeInfo[0];
-  var recipeIndex = recipeInfo[1];
-  if (recipeExists) {
-    favorite.splice(recipeIndex, 1);
-  } else {
-    favorite.push(meal);
+// creates buttons for the cities searched
+async function save(cityName) {
+  let cities = JSON.parse(localStorage.getItem('cities')) || [];
+  const cityExists = cities.find((x) => x.toUpperCase() == cityName.toUpperCase()); // will return undefined if cityName is not already saved
+  if (cityExists == undefined) {
+    cities.push(cityName);
+    localStorage.setItem('cities', JSON.stringify(cities));
+    let cityBtns = document.getElementById('cityBtns');
+    let savedCity = document.createElement('button');
+    savedCity.id = 'savedCity';
+    savedCity.textContent = cityName;
+    savedCity.addEventListener('click', async function () {
+      await getWeather(cityName);
+    });
+    cityBtns.appendChild(savedCity);
   }
-  localStorage.setItem('favorites', JSON.stringify(favorite));
-  changeLikeButtonIcon(this.event.target);
+}
+
+async function cityLoop() {
+  let cities = JSON.parse(localStorage.getItem('cities')) || [];
+  let cityBtns = document.getElementById('cityBtns');
+
+  for (let index = 0; index < cities.length; index++) {
+    let savedCity = document.createElement('button');
+    savedCity.id = 'savedCity';
+    savedCity.textContent = cities[index];
+    savedCity.addEventListener('click', async function () {
+      await getWeather(cities[index]);
+    });
+    cityBtns.appendChild(savedCity);
+  }
 }
