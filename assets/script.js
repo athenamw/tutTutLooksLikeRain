@@ -46,7 +46,7 @@ async function loadResults(currentWeatherData, futureWeatherData) {
   const disResults = document.getElementById('disResults');
   const fiveDayHeader = document.getElementById('fiveDayHeader');
 
-  location.textContent = currentWeatherData.name + ' (' + new Date().toDateString() + ')';
+  location.textContent = currentWeatherData.name + ' (' + new Date().toLocaleDateString() + ')';
   temp.textContent = `Temp: ${currentWeatherData.main.temp} °F`;
   wind.textContent = `Wind: ${currentWeatherData.wind.speed} MPH`;
   humid.textContent = `Humidity: ${currentWeatherData.main.humidity} %`;
