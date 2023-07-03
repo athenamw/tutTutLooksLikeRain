@@ -1,23 +1,23 @@
 const weatherPic = `https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2{}`;
 var searchBtn = document.getElementById('searchBtn');
 var searchText = document.getElementById('searchText');
-
+// loads saved cities
 window.addEventListener('load', cityLoop);
-
+// search box/button
 searchBtn.addEventListener('click', searchEventListener);
 searchText.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     searchEventListener();
   }
 });
-
+// clears text content from input
 async function searchEventListener() {
   let cityName = searchText.value;
   searchText.value = '';
   await getWeather(cityName);
   await save(cityName);
 }
-
+// apis to get weather
 async function getWeather(cityName) {
   const currentWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=616ee85e0800531ffd57bf53410a822b&units=imperial`;
   let currentWeatherData = await getForecast(currentWeatherApi);
@@ -35,7 +35,7 @@ async function getForecast(api) {
     }
   });
 }
-
+// displays forecast
 async function loadResults(currentWeatherData, futureWeatherData) {
   const location = document.querySelector('#cityName');
   const temp = document.querySelector('#temp');

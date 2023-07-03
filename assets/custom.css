@@ -30,6 +30,12 @@
   grid-area: main;
 }
 
+#currentWeatherIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 #searchBtn {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -48,6 +54,7 @@
   margin-left: 200px;
   margin-top: 25px;
   width: 750px;
+  padding: 5px;
 }
 
 #icon {
@@ -72,6 +79,7 @@
   color: white;
   margin-top: 25px;
   margin-left: 30px;
+  padding: 5px;
 }
 
 #forecastBoxes {
