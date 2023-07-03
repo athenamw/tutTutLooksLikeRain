@@ -61,7 +61,6 @@ async function loadResults(currentWeatherData, futureWeatherData) {
   for (let index = 5; index < 40; index += 8) {
     let futureResults = document.createElement('section');
     futureResults.id = 'futureResults';
-
     let fDate = `<p>Date: ${futureWeatherData.list[index].dt_txt}</p>`;
     let weatherImage = document.createElement('img');
     weatherImage.style.maxWidth = '40px';
