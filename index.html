@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/custom.css" />
     <title>Tut Tut Looks Like Rain</title>
   </head>
   <body>
     <section id="page">
       <header id="header">Weather Dashboard</header>
-        <nav>
+        <nav class="nav flex-column">
           <section id:"cityList">
-            <h1>Search for a City:</h1>
+            <h3 id="searchHeading">Search for a City:</h3>
               <input type="text" id="searchText" /> <br />
-                <button id="searchBtn">Search</button>
+                <button id="searchBtn" class="btn btn-primary">Search</button>
           </section>
           <section id="savedCities">
-            <ul id="cityBtns"></ul>
+            <ul id="cityBtns" class="d-grid gap-2"></ul>
           </section>
         </nav>
           <main>

@@ -14,6 +14,7 @@
   grid-area: head;
   display: flex;
   justify-content: center;
+  align-items: center;
   background: rgb(9, 9, 121);
   background: linear-gradient(90deg, rgba(9, 9, 121, 1) 72%, rgba(2, 0, 36, 1) 99%);
   font-size: 50px;
@@ -22,6 +23,7 @@
 
 #page > nav {
   grid-area: nav;
+  flex-wrap: nowrap;
 }
 
 #page > main {
@@ -29,11 +31,8 @@
 }
 
 #searchBtn {
-  background-color: #6d6de7;
-  color: silver;
-  text-shadow: grey;
-  border-bottom: solid;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .displayResults {
@@ -46,6 +45,10 @@
 
 #icon {
   display: none;
+}
+
+#searchHeading {
+  font-size: large;
 }
 
 #conditionIcon {

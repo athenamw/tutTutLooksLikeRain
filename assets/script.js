@@ -89,6 +89,7 @@ async function save(cityName) {
     let cityBtns = document.getElementById('cityBtns');
     let savedCity = document.createElement('button');
     savedCity.id = 'savedCity';
+    savedCity.classList.add('btn', 'btn-secondary', 'btn-lg', 'nav-item');
     savedCity.textContent = cityName;
     savedCity.addEventListener('click', async function () {
       await getWeather(cityName);
@@ -104,6 +105,7 @@ async function cityLoop() {
   for (let index = 0; index < cities.length; index++) {
     let savedCity = document.createElement('button');
     savedCity.id = 'savedCity';
+    savedCity.classList.add('btn', 'btn-secondary', 'btn-lg', 'nav-item');
     savedCity.textContent = cities[index];
     savedCity.addEventListener('click', async function () {
       await getWeather(cities[index]);
